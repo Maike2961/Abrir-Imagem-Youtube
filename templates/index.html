@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixar imagem</title>
+    <style>
+        .hide{
+            display: none !important;
+        }
+
+        h1{
+            text-align: center;
+            font-family: Verdana, sans-serif;
+        }
+        #mene{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .but{
+            margin: 5px;
+            padding: 5px;
+            border: none;
+            border-color: bisque;
+            margin-bottom: 20px;
+        }
+
+        #link_video{
+            border-radius: 5px;
+            width: 500px;
+        }
+        #esconda{
+            text-align: center;
+            font-weight: bold;
+            font-size: 13pt;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Abrir Imagem Youtube Video</h1>
+    
+    <div id="mene">    
+        <input type="url" id="link_video" name="link_video" required><br><br>
+        
+        <button class="but" onclick="get_thumbnail()">Abrir !</button>
+        
+        <button class="but" id="help">Não está conseguindo abri a imagem ?</button> 
+    </div>
+
+    <div class="hide" id="esconda"> 
+        <p>1° Recarregue a página</p>
+        <p>2° Vá ate a url do navegador no Youtube </p>
+        <p>3° Copie a url </p>
+        <p>4° Cole a url</p>
+    </div>
+
+    <div>
+        <img id="imagem" src="">
+    </div>
+    <script>
+        function get_thumbnail(){
+            video_link = document.getElementById("link_video").value
+            video_id = video_link.split('v=')[1]
+           document.getElementById("imagem").setAttribute('src', `https://i3.ytimg.com/vi/${video_id}/maxresdefault.jpg`)
+        }
+
+        
+         document.getElementById("help").addEventListener("click", function(){
+            let esconda = document.getElementById("esconda")
+            let imagem = document.getElementById("imagem")
+            esconda.classList.remove("hide")
+            imagem.classList.add("hide")
+        });
+    </script>
+</body>
+</html>
